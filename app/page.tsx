@@ -1,7 +1,39 @@
 import React from 'react';
 
-const RootPage: React.FC = () => {
-    return <div className="bc-beers-list-page">BEERS LISTING PAGE</div>;
+import { IBeer } from '@/models/Beer';
+import { getBeersApi } from '@/services/beersService';
+import { BeerListItem } from '@/components/BeerListITem/BeerListItem';
+import { BeerSearch } from '@/components/BeerSearch/BeerSearch';
+
+export type TRootPageProps = {
+    searchParams: {
+        [key: string]: string;
+    };
+};
+
+const RootPage: React.FC<TRootPageProps> = async ({ searchParams }) => {
+    let beers: IBeer[] = [];
+
+    // Async call for getting the beers list from the API
+    // passing the search term by which the results list will be filtered.
+    await getBeersApi({
+        beer_name: searchParams.search
+    })
+        .then((result) => {
+            beers = result.data || [];
+        })
+        .catch((error) => {
+            console.error('An error occurred while retrieving the beers list. Details: ', error);
+        });
+
+    return (
+        <div className="bc-beers-list-page">
+            <BeerSearch />
+            {beers.map((beer: IBeer) => (
+                <BeerListItem key={beer.id} beer={beer} />
+            ))}
+        </div>
+    );
 };
 
 export default RootPage;

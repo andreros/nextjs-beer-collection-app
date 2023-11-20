@@ -1,0 +1,15 @@
+.bc-beer-search {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    &__search-term {
+        flex-grow: 1;
+        height: 48px;
+    }
+
+    &__search-button {
+        height: 48px;
+        padding-inline: 16px;
+    }
+}

@@ -6,6 +6,7 @@
     max-width: 1440px;
 
     main {
-        flex-grow: 1;
+        height: calc(100vh - 130px);
+        overflow-y: auto;
     }
 }
