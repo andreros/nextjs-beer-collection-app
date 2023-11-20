@@ -1,5 +1,8 @@
 import type { Metadata } from 'next';
+import { Footer } from '@/components/Footer/Footer';
+import { Header } from '@/components/Header/Header';
 import { getEnvironmentVariables } from '@/tools/tools';
+
 import packageJson from '@/package.json';
 import './globals.scss';
 
@@ -19,7 +22,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en">
-            <body className="bc-beer-collection-app">{children}</body>
+            <body className="bc-beer-collection-app">
+                <Header />
+                <main>{children}</main>
+                <Footer />
+            </body>
         </html>
     );
 }

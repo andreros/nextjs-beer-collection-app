@@ -1,3 +1,11 @@
 .bc-beer-collection-app {
-    // style rules go here
+    display: flex;
+    flex-direction: column;
+    margin-inline: auto;
+    min-width: 375px;
+    max-width: 1440px;
+
+    main {
+        flex-grow: 1;
+    }
 }
