@@ -10,3 +10,13 @@ export interface ICollectionItem {
   notes?: string
   rating: number
 }
+
+// get Is Beer In Collection
+export interface IGetIsBeerInCollectionParams {
+  email: string,
+  beerId: number
+}
+
+export interface IGetIsBeerInCollectionApiResponse {
+  isBeerInCollection: boolean
+}
