@@ -1,3 +1,75 @@
 .bc-beer-details-page {
-    // style rules go here
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    gap: 24px;
+    min-height: calc(100vh - 145px);
+
+    &__background_image {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        opacity: 0.2;
+        z-index: -1;
+    }
+
+    &__header {
+        display: flex;
+        gap: 24px;
+    }
+
+    &__thumbnail {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        width: 100px;
+        height: 100px;
+
+        img {
+            max-width: 100px;
+            max-height: 100px;
+        }
+    }
+
+    &__title {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        margin-block: auto;
+
+        h1 {
+            font-size: 28px;
+        }
+
+        h3 {
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .bc-back-button {
+            text-align: inherit;
+            margin-top: 16px;
+        }
+    }
+
+    &__tagline {
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    &__description {
+        font-size: 18px;
+
+        &-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+    }
 }

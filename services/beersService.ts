@@ -9,7 +9,7 @@ export const getBeersApi = (params?: IGetBeersParams): AxiosPromise<IBeer[]> => 
     return api({ method: 'get', url: '/beers', params: { beer_name, page, per_page } });
 };
 
-export const getBeerApi = (params: IGetBeerParams): AxiosPromise<IBeer> => {
+export const getBeerApi = (params: IGetBeerParams): AxiosPromise<IBeer[]> => {
     const { id } = params;
     return api({ method: 'get', url: `/beers/${id}` });
 };
