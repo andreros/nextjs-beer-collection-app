@@ -3,6 +3,7 @@ import React, { CSSProperties } from 'react';
 import { IBeer } from '@/models/Beer';
 import { getBeerApi } from '@/services/beersService';
 import { BackButton } from '@/components/BackButton/BackButton';
+import { getBeerCollectionCount, insertCollectionItem } from '@/prisma/collection';
 
 export type TBeerDetailsPageProps = {
     params: {
@@ -27,8 +28,12 @@ const BeerDetailsPage: React.FC<TBeerDetailsPageProps> = async ({ params }) => {
             console.error('An error occurred while retrieving the beer details. Details: ', error);
         });
 
-    //console.log('Beer details page params: ', params);
-    //console.log('Beer details: ', beer);
+    // console.log('Beer details page params: ', params);
+    // console.log('Beer details: ', beer);
+
+    // await insertCollectionItem();
+    // const count = await getBeerCollectionCount('andreros@gmail.com');
+    // console.log('getBeerCollectionCount: ', count);
 
     const rootStyles: CSSProperties = {
         backgroundImage: `url(${beer!.image_url})`
@@ -51,16 +56,6 @@ const BeerDetailsPage: React.FC<TBeerDetailsPageProps> = async ({ params }) => {
             <BackButton />
             <h2 className="bc-beer-details-page__tagline">{beer!.tagline}</h2>
             <div className="bc-beer-details-page__description">{beer!.description}</div>
-            <ul className="bc-beer-details-page__description">
-                <div className="bc-beer-details-page__description-title">Goes well with</div>
-                {beer!.food_pairing.map((food: string) => {
-                    return (
-                        <li key={food} className="bc-beer-details-page__description">
-                            - {food}
-                        </li>
-                    );
-                })}
-            </ul>
             <div className="bc-beer-details-page__description">
                 <div className="bc-beer-details-page__description-title">Brewer's Tip</div>
                 {beer!.brewers_tips}
@@ -68,10 +63,6 @@ const BeerDetailsPage: React.FC<TBeerDetailsPageProps> = async ({ params }) => {
             <div className="bc-beer-details-page__description">
                 <div className="bc-beer-details-page__description-title">First brewed in</div>
                 {beer!.first_brewed}
-            </div>
-            <div className="bc-beer-details-page__description">
-                <div className="bc-beer-details-page__description-title">Sold in</div>
-                {beer!.volume.value} {beer!.volume.unit}
             </div>
 
             {/** Custom components - Authenticated features */}

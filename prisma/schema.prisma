@@ -1,0 +1,23 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model collection {
+  email        String
+  beer_id      Int
+  name         String
+  image_url    String? @default("https://placehold.co/200x200")
+  tagline      String
+  description  String
+  brewers_tips String
+  first_brewed String
+  notes        String?
+  rating       Int     @default(0)
+
+  @@id([email, beer_id])
+}
