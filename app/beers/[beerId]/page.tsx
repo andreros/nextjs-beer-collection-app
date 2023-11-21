@@ -20,7 +20,7 @@ const BeerDetailsPage: React.FC<TBeerDetailsPageProps> = async ({ params }) => {
     // passing the search term by which the results list will be filtered.
     await getBeerApi({ id })
         .then((result) => {
-            console.log(result);
+            // console.log(result);
             beer = result.data[0] || null;
         })
         .catch((error) => {
@@ -81,7 +81,7 @@ const BeerDetailsPage: React.FC<TBeerDetailsPageProps> = async ({ params }) => {
             </div>
             <div className="bc-beer-details-page__description">
                 <div className="bc-beer-details-page__description-title">Your rating</div>
-                <input type="range" min="0" max="5" value="0" step="1" />
+                <input type="range" min="0" max="5" step="1" />
             </div>
             <button className="bc-beer-details-page__add-to-collection" type="button">
                 Add to my collection
