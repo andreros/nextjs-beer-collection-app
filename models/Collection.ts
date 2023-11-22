@@ -20,6 +20,15 @@ export interface IAddBeerToCollectionApiResponse {
   collectionItem: ICollectionItem 
 }
 
+// get beer collection
+export interface IGetBeerCollectionParams {
+  email: string
+}
+
+export interface IGetBeerCollectionApiResponse {
+  collection: ICollectionItem[]
+}
+
 // get beer details
 export interface IGetBeerDetailsParams {
   email: string,

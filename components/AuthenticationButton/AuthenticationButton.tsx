@@ -15,7 +15,14 @@ export const AuthenticationButton: React.FC = () => {
 
     return (
         <button className="bc-authentication-button" type="button" onClick={handleClick}>
-            {isAuthenticated ? <>Sign Out</> : <>Sign In</>}
+            {isAuthenticated ? (
+                <>
+                    Sign Out <br />
+                    {session?.user?.name}
+                </>
+            ) : (
+                <>Sign In</>
+            )}
         </button>
     );
 };

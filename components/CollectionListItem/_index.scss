@@ -1,0 +1,25 @@
+.bc-collection-list-item {
+    display: flex;
+
+    &__image {
+        background-color: palegreen; // TO BE DELETED
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        width: 150px;
+        height: 150px;
+
+        img {
+            max-width: 150px;
+            max-height: 150px;
+        }
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        gap: 16px;
+    }
+}

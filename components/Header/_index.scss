@@ -9,4 +9,10 @@
     &__logo_link {
         display: flex;
     }
+
+    &__nav-links {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
 }
