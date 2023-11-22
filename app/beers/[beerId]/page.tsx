@@ -3,7 +3,6 @@ import React, { CSSProperties } from 'react';
 import { IBeer } from '@/models/Beer';
 import { AddRemoveToCollectionButton } from '@/components/AddRemoveToCollectionButton/AddRemoveToCollectionButton';
 import { BackButton } from '@/components/BackButton/BackButton';
-import { BeerInCollectionBadge } from '@/components/BeerInCollectionBadge/BeerInCollectionBadge';
 import { BeerNotesInput } from '@/components/BeerNotesInput/BeerNotesInput';
 import { BeerRatingRange } from '@/components/BeerRatingRange/BeerRatingRange';
 import { Provider } from '@/components/Provider/Provider';
@@ -46,7 +45,6 @@ const BeerDetailsPage: React.FC<TBeerDetailsPageProps> = async ({ params }) => {
                     </div>
                     <div className="bc-beer-details-page__title">
                         <h1>{beer.name}</h1>
-                        <BeerInCollectionBadge />
                         <AddRemoveToCollectionButton beer={beer} />
                     </div>
                 </div>
@@ -62,16 +60,8 @@ const BeerDetailsPage: React.FC<TBeerDetailsPageProps> = async ({ params }) => {
                     {beer.first_brewed}
                 </div>
 
-                {/** Custom components - Authenticated features */}
-                <div className="bc-beer-details-page__description">
-                    <div className="bc-beer-details-page__description-title">Notes</div>
-                    <BeerNotesInput placeholder="Write your personal notes here..." />
-                </div>
-                <div className="bc-beer-details-page__description">
-                    <div className="bc-beer-details-page__description-title">Your rating</div>
-                    <BeerRatingRange />
-                </div>
-                {/** Custom components - Authenticated features */}
+                <BeerNotesInput placeholder="Write your personal notes here..." />
+                <BeerRatingRange />
 
                 <BackButton />
             </Provider>

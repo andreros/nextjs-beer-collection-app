@@ -3,6 +3,8 @@ import { AxiosPromise } from 'axios';
 import {
     IAddBeerToCollectionParams,
     IAddBeerToCollectionApiResponse,
+    IGetBeerDetailsParams,
+    IGetBeerDetailsApiResponse,
     IGetIsBeerInCollectionParams,
     IGetIsBeerInCollectionApiResponse,
     IRemoveBeerFromCollectionParams,
@@ -15,6 +17,11 @@ import { nextApi } from '@/services/nextApi';
 export const addBeerToCollectionApi = (params: IAddBeerToCollectionParams): AxiosPromise<IAddBeerToCollectionApiResponse> => {
     const { collectionItem } = params;
     return nextApi({ method: 'post', url: '/collection/addBeerToCollection', data: collectionItem });
+};
+
+export const getBeerDetailsApi = (params: IGetBeerDetailsParams): AxiosPromise<IGetBeerDetailsApiResponse> => {
+    const { email, beerId } = params;
+    return nextApi({ method: 'get', url: '/collection/getBeerDetails', params: { email, beerId } });
 };
 
 export const getIsBeerInCollectionApi = (params: IGetIsBeerInCollectionParams): AxiosPromise<IGetIsBeerInCollectionApiResponse> => {

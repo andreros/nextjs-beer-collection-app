@@ -1,19 +1,19 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 
-import { updateBeerDetailsApi } from '@/services/collectionService';
+import { getBeerDetailsApi, updateBeerDetailsApi } from '@/services/collectionService';
 
 export type TBeerNotesInputProps = {
     placeholder?: string;
-    previousNotes?: string;
 };
 
-export const BeerNotesInput: React.FC<TBeerNotesInputProps> = ({ placeholder, previousNotes }) => {
+export const BeerNotesInput: React.FC<TBeerNotesInputProps> = ({ placeholder }) => {
     const params = useParams();
     const { data: session } = useSession();
+    const [notes, setNotes] = useState('');
 
     const email = session?.user?.email;
     const beerId = Number.parseInt(String(params.beerId));
@@ -24,10 +24,29 @@ export const BeerNotesInput: React.FC<TBeerNotesInputProps> = ({ placeholder, pr
             collectionItem: {
                 email,
                 beer_id: beerId,
-                notes: event.currentTarget.value
+                notes: event.target.value
             }
         });
+        setNotes(event.target.value);
     };
 
-    return <textarea className="bc-beer-notes-input" placeholder={placeholder} onBlur={handleBlur} value={previousNotes} />;
+    useEffect(() => {
+        if (!email || !beerId) return;
+        // :( SAD timeout Workaround for Prisma SQLite concurrent calls bug...
+        const t = setTimeout(() => {
+            getBeerDetailsApi({ email, beerId }).then((response) => {
+                setNotes(response.data.collectionItem?.notes ?? '');
+                clearTimeout(t);
+            });
+        }, 750);
+    }, [email, beerId]);
+
+    if (!email || !beerId) return <></>;
+
+    return (
+        <div className="bc-beer-notes-input">
+            <div className="bc-beer-notes-input__label">My notes</div>
+            <textarea className="bc-beer-notes-input__control" placeholder={placeholder} onBlur={handleBlur} defaultValue={notes} />
+        </div>
+    );
 };

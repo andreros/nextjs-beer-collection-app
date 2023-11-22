@@ -5,7 +5,7 @@ import { useParams } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 
 import { IBeer } from '@/models/Beer';
-import { addBeerToCollectionApi, removeBeerFromCollectionApi } from '@/services/collectionService';
+import { addBeerToCollectionApi, getIsBeerInCollectionApi, removeBeerFromCollectionApi } from '@/services/collectionService';
 
 export type TAddRemoveToCollectionButton = {
     beer: IBeer;
@@ -22,10 +22,8 @@ export const AddRemoveToCollectionButton: React.FC<TAddRemoveToCollectionButton>
     const handleClick = () => {
         if (!email || !beerId) return;
         if (isBeerInCollection) {
-            removeBeerFromCollectionApi({ email, beerId }).then((response) => {
-                setIsBeerInCollection(false);
-                sessionStorage.removeItem(`${email}_${beerId}`);
-            });
+            removeBeerFromCollectionApi({ email, beerId });
+            setIsBeerInCollection(false);
         } else {
             addBeerToCollectionApi({
                 collectionItem: {
@@ -39,17 +37,18 @@ export const AddRemoveToCollectionButton: React.FC<TAddRemoveToCollectionButton>
                     first_brewed: beer.first_brewed,
                     rating: 0
                 }
-            }).then(() => {
-                setIsBeerInCollection(true);
-                sessionStorage.setItem(`${email}_${beerId}`, 'true');
             });
+            setIsBeerInCollection(true);
         }
     };
 
     useEffect(() => {
         if (!email || !beerId) return;
+        // :( SAD timeout Workaround for Prisma SQLite concurrent calls bug...
         const t = setTimeout(() => {
-            if (sessionStorage.getItem(`${email}_${beerId}`)) setIsBeerInCollection(true);
+            getIsBeerInCollectionApi({ email, beerId }).then((response) => {
+                setIsBeerInCollection(response.data.isBeerInCollection);
+            });
             clearTimeout(t);
         }, 500);
     }, [email, beerId]);

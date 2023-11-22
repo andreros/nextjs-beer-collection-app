@@ -24,6 +24,36 @@ export const addBeerToCollection = async (collectionItem: ICollectionItem): Prom
 };
 
 /**
+ * Method responsible for getting a given beer details.
+ * @param {string} email The user email. 
+ * @param {number} beer_id The beer ID. 
+ * @returns {ICollectionItem} The beer details. 
+ */
+export const getBeerDetails = async (email: string, beer_id: number): Promise<ICollectionItem> => {
+    const prismaClient = getPrismaClient();
+    
+    try {
+        const collectionItem = await prismaClient.collection.findUnique({
+            where: {
+                email_beer_id: {
+                    email,
+                    beer_id
+                }
+            }
+        }) as ICollectionItem
+        return collectionItem;
+    } catch (error) {
+        let message = 'Something went wrong while executing the `getBeerDetails` method.';
+        console.error('ERROR: ', message);
+        if (error instanceof Error) {
+            message = error.message;
+            console.error('DETAILS: ', message);
+        }
+        throw new Error(message);
+    }
+};
+
+/**
  * Method responsible for verifying if a given beer is in the user collection.
  * @param {string} email The user email. 
  * @param {number} beer_id The beer ID. 
