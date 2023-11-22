@@ -16,9 +16,13 @@ export const BeerInCollectionBadge: React.FC = () => {
 
     useEffect(() => {
         if (!email || !beerId) return;
-
         getIsBeerInCollectionApi({ email, beerId }).then((response) => {
-            setIsBeerInCollection(response?.data?.isBeerInCollection ?? false);
+            if (response?.data?.isBeerInCollection) {
+                setIsBeerInCollection(true);
+                sessionStorage.setItem(`${email}_${beerId}`, 'true');
+            } else {
+                sessionStorage.removeItem(`${email}_${beerId}`);
+            }
         });
     }, [email, beerId]);
 

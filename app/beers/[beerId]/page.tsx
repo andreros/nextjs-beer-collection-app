@@ -5,7 +5,7 @@ import { getBeerApi } from '@/services/beersService';
 import { BackButton } from '@/components/BackButton/BackButton';
 import { BeerInCollectionBadge } from '@/components/BeerInCollectionBadge/BeerInCollectionBadge';
 import { Provider } from '@/components/Provider/Provider';
-import { getIsBeerInCollection } from '@/prisma/collection';
+import { AddRemoveToCollectionButton } from '@/components/AddRemoveToCollectionButton/AddRemoveToCollectionButton';
 
 export type TBeerDetailsPageProps = {
     params: {
@@ -22,23 +22,16 @@ const BeerDetailsPage: React.FC<TBeerDetailsPageProps> = async ({ params }) => {
     // Async call for getting the beer details from the API
     await getBeerApi({ id })
         .then((result) => {
-            beer = result.data[0] || null;
+            beer = (result.data[0] as IBeer) || null;
         })
         .catch((error) => {
             console.error('An error occurred while retrieving the beer details. Details: ', error);
         });
 
-    //const isBeerInCollection = await getIsBeerInCollection(sessionStorage.getItem('user-email') ?? '', id);
-
-    // console.log('Beer details page params: ', params);
-    // console.log('Beer details: ', beer);
-
-    // await insertCollectionItem();
-    // const count = await getBeerCollectionCount('andreros@gmail.com');
-    // console.log('getBeerCollectionCount: ', count);
+    if (!beer) return <section className="bc-beer-details-page">Beer not found :/</section>;
 
     const rootStyles: CSSProperties = {
-        backgroundImage: `url(${beer!.image_url})`
+        backgroundImage: `url(${beer.image_url})`
     };
 
     return (
@@ -47,23 +40,24 @@ const BeerDetailsPage: React.FC<TBeerDetailsPageProps> = async ({ params }) => {
                 <div className="bc-beer-details-page__background_image" style={rootStyles} />
                 <div className="bc-beer-details-page__header">
                     <div className="bc-beer-details-page__thumbnail">
-                        <img src={beer!.image_url} alt={beer!.name} />
+                        <img src={beer.image_url} alt={beer.name} />
                     </div>
                     <div className="bc-beer-details-page__title">
-                        <h1>{beer!.name}</h1>
+                        <h1>{beer.name}</h1>
                         <BeerInCollectionBadge />
+                        <AddRemoveToCollectionButton beer={beer} />
                     </div>
                 </div>
                 <BackButton />
-                <h2 className="bc-beer-details-page__tagline">{beer!.tagline}</h2>
-                <div className="bc-beer-details-page__description">{beer!.description}</div>
+                <h2 className="bc-beer-details-page__tagline">{beer.tagline}</h2>
+                <div className="bc-beer-details-page__description">{beer.description}</div>
                 <div className="bc-beer-details-page__description">
-                    <div className="bc-beer-details-page__description-title">Brewer's Tip</div>
-                    {beer!.brewers_tips}
+                    <div className="bc-beer-details-page__description-title">Brewer's Tips</div>
+                    {beer.brewers_tips}
                 </div>
                 <div className="bc-beer-details-page__description">
                     <div className="bc-beer-details-page__description-title">First brewed in</div>
-                    {beer!.first_brewed}
+                    {beer.first_brewed}
                 </div>
 
                 {/** Custom components - Authenticated features */}
@@ -75,9 +69,6 @@ const BeerDetailsPage: React.FC<TBeerDetailsPageProps> = async ({ params }) => {
                     <div className="bc-beer-details-page__description-title">Your rating</div>
                     <input type="range" min="0" max="5" step="1" />
                 </div>
-                <button className="bc-beer-details-page__add-to-collection" type="button">
-                    Add to my collection
-                </button>
                 {/** Custom components - Authenticated features */}
 
                 <BackButton />

@@ -6,7 +6,7 @@ import { signIn, signOut, useSession } from 'next-auth/react';
 
 export const AuthenticationButton: React.FC = () => {
     const { data: session } = useSession();
-    const isAuthenticated = !!session && !!session.user;
+    const isAuthenticated = !!session?.user?.email;
 
     const handleClick = () => {
         if (isAuthenticated) signOut();

@@ -11,7 +11,16 @@ export interface ICollectionItem {
   rating: number
 }
 
-// get Is Beer In Collection
+// add beer to collection
+export interface IAddBeerToCollectionParams {
+  collectionItem: ICollectionItem 
+}
+
+export interface IAddBeerToCollectionApiResponse {
+  collectionItem: ICollectionItem 
+}
+
+// get is beer in the collection
 export interface IGetIsBeerInCollectionParams {
   email: string,
   beerId: number
@@ -19,4 +28,14 @@ export interface IGetIsBeerInCollectionParams {
 
 export interface IGetIsBeerInCollectionApiResponse {
   isBeerInCollection: boolean
+}
+
+// remove beer from collection
+export interface IRemoveBeerFromCollectionParams {
+  email: string,
+  beerId: number
+}
+
+export interface IRemoveBeerFromCollectionApiResponse {
+  success: boolean
 }
