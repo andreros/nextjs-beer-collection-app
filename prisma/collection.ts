@@ -12,8 +12,13 @@ export const addBeerToCollection = async (collectionItem: ICollectionItem): Prom
     try {
         await prismaClient.collection.create({ data: collectionItem });
     } catch (error) {
-        console.error('Something went wrong while executing the `addBeerToCollection` method. Details: ', error);
-        return false;
+        let message = 'Something went wrong while executing the `addBeerToCollection` method.';
+        console.error('ERROR: ', message);
+        if (error instanceof Error) {
+            message = error.message;
+            console.error('DETAILS: ', message);
+        }
+        throw new Error(message);
     }
     return true;
 };
@@ -54,8 +59,43 @@ export const removeBeerFromCollection = async (email: string, beer_id: number): 
             }
         });
     } catch (error) {
-        console.error('Something went wrong while executing the `removeBeerFromCollection` method. Details: ', error);
-        return false;
+        let message = 'Something went wrong while executing the `removeBeerFromCollection` method.';
+        console.error('ERROR: ', message);
+        if (error instanceof Error) {
+            message = error.message;
+            console.error('DETAILS: ', message);
+        }
+        throw new Error(message);
+    }
+    return true;
+};
+
+/**
+ * Method responsible for updating a given beer details in a user collection.
+ * @param {ICollectionItem} collectionItem The beer (collection item) data. 
+ * @returns Boolean value indicating if the beer was updated in the user collection or not.
+ */
+export const updateBeerDetails = async (collectionItem: ICollectionItem): Promise<boolean> => {
+    const prismaClient = getPrismaClient();
+
+    try {
+        await prismaClient.collection.update({
+            data: collectionItem,
+            where: {
+                email_beer_id: {
+                    email: collectionItem.email,
+                    beer_id: collectionItem.beer_id
+                }
+            }
+        });
+    } catch (error) {
+        let message = 'Something went wrong while executing the `updateBeerDetails` method.';
+        console.error('ERROR: ', message);
+        if (error instanceof Error) {
+            message = error.message;
+            console.error('DETAILS: ', message);
+        }
+        throw new Error(message);
     }
     return true;
 };

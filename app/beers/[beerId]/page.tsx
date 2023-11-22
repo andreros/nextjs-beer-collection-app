@@ -1,11 +1,13 @@
 import React, { CSSProperties } from 'react';
 
 import { IBeer } from '@/models/Beer';
-import { getBeerApi } from '@/services/beersService';
+import { AddRemoveToCollectionButton } from '@/components/AddRemoveToCollectionButton/AddRemoveToCollectionButton';
 import { BackButton } from '@/components/BackButton/BackButton';
 import { BeerInCollectionBadge } from '@/components/BeerInCollectionBadge/BeerInCollectionBadge';
+import { BeerNotesInput } from '@/components/BeerNotesInput/BeerNotesInput';
+import { BeerRatingRange } from '@/components/BeerRatingRange/BeerRatingRange';
 import { Provider } from '@/components/Provider/Provider';
-import { AddRemoveToCollectionButton } from '@/components/AddRemoveToCollectionButton/AddRemoveToCollectionButton';
+import { getBeerApi } from '@/services/beersService';
 
 export type TBeerDetailsPageProps = {
     params: {
@@ -63,11 +65,11 @@ const BeerDetailsPage: React.FC<TBeerDetailsPageProps> = async ({ params }) => {
                 {/** Custom components - Authenticated features */}
                 <div className="bc-beer-details-page__description">
                     <div className="bc-beer-details-page__description-title">Notes</div>
-                    <textarea placeholder="Write your personal notes here..." />
+                    <BeerNotesInput placeholder="Write your personal notes here..." />
                 </div>
                 <div className="bc-beer-details-page__description">
                     <div className="bc-beer-details-page__description-title">Your rating</div>
-                    <input type="range" min="0" max="5" step="1" />
+                    <BeerRatingRange />
                 </div>
                 {/** Custom components - Authenticated features */}
 

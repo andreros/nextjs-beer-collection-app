@@ -6,7 +6,9 @@ import {
     IGetIsBeerInCollectionParams,
     IGetIsBeerInCollectionApiResponse,
     IRemoveBeerFromCollectionParams,
-    IRemoveBeerFromCollectionApiResponse, 
+    IRemoveBeerFromCollectionApiResponse,
+    IUpdateBeerDetailsParams, 
+    IUpdateBeerDetailsApiResponse
 } from '@/models/Collection';
 import { nextApi } from '@/services/nextApi';
 
@@ -23,4 +25,9 @@ export const getIsBeerInCollectionApi = (params: IGetIsBeerInCollectionParams): 
 export const removeBeerFromCollectionApi = (params: IRemoveBeerFromCollectionParams): AxiosPromise<IRemoveBeerFromCollectionApiResponse> => {
     const { email, beerId } = params;
     return nextApi({ method: 'delete', url: '/collection/removeBeerFromCollection', params: { email, beerId } });
+};
+
+export const updateBeerDetailsApi = (params: IUpdateBeerDetailsParams): AxiosPromise<IUpdateBeerDetailsApiResponse> => {
+    const { collectionItem } = params;
+    return nextApi({ method: 'put', url: '/collection/updateBeerDetails', data: collectionItem });
 };
