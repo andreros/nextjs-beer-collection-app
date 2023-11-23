@@ -49,7 +49,7 @@ const BeerDetailsPage: React.FC<TBeerDetailsPageProps> = async ({ params }) => {
                     </div>
                 </div>
                 <BackButton />
-                <h2>{beer.tagline}</h2>
+                <h2 className="bc-beer-details-page__tagline">{beer.tagline}</h2>
                 <div className="bc-beer-details-page__description">{beer.description}</div>
                 <div className="bc-beer-details-page__description">
                     <div className="bc-beer-details-page__description-title">Brewer's Tips</div>

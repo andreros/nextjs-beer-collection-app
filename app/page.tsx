@@ -29,10 +29,23 @@ const RootPage: React.FC<TRootPageProps> = async ({ searchParams }) => {
 
     return (
         <div className="bc-beers-list-page">
-            <BeerSearch />
-            {beers.map((beer: IBeer) => (
-                <BeerListItem key={beer.id} beer={beer} />
-            ))}
+            {beers.length > 0 && (
+                <>
+                    <BeerSearch />
+                    {beers.map((beer: IBeer) => (
+                        <BeerListItem key={beer.id} beer={beer} />
+                    ))}
+                </>
+            )}
+            {beers.length === 0 && !searchParams?.search && (
+                <div className="bc-beers-list-page__no-beers bc-h3">For some awkward reason, there are no beers to be shown :( Maybe someone drank them all...</div>
+            )}
+            {beers.length === 0 && searchParams?.search && searchParams.search.trim() !== '' && (
+                <>
+                    <BeerSearch />
+                    <div className="bc-beers-list-page__no-beers bc-h3">No beers were found for the given search term.</div>
+                </>
+            )}
         </div>
     );
 };

@@ -17,8 +17,8 @@ export const CollectionListItem: React.FC<TCollectionListItemProps> = ({ collect
             </Link>
             <div className="bc-collection-list-item__content">
                 <h1 className="bc-h2">{collectionItem.name}</h1>
-                <h2 className="bc-h4">{collectionItem.tagline}</h2>
-                <div className="bc-line-clamp-2">{collectionItem.description}</div>
+                <h2 className="bc-collection-list-item__tagline bc-h4">{collectionItem.tagline}</h2>
+                <div className="bc-collection-list-item__description bc-line-clamp-3">{collectionItem.description}</div>
             </div>
         </section>
     );

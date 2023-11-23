@@ -32,10 +32,23 @@ const BeerCollectionList: React.FC<TBeerCollectionListProps> = ({ searchParams }
     return (
         <section className="bc-beer-collection-list">
             <h1>My Collection</h1>
-            <BeerSearch />
-            {collection.map((collectionItem) => {
-                return <CollectionListItem key={collectionItem.beer_id} collectionItem={collectionItem} />;
-            })}
+            {collection.length > 0 && (
+                <>
+                    <BeerSearch />
+                    {collection.map((collectionItem) => {
+                        return <CollectionListItem key={collectionItem.beer_id} collectionItem={collectionItem} />;
+                    })}
+                </>
+            )}
+            {collection.length === 0 && !searchParams?.search && (
+                <div className="bc-beer-collection-list__no-beers bc-h3">Unfortunately, there are beers in your collection yet. Please, try adding one from the beers list.</div>
+            )}
+            {collection.length === 0 && searchParams?.search && searchParams.search.trim() !== '' && (
+                <>
+                    <BeerSearch />
+                    <div className="bc-beer-collection-list__no-beers bc-h3">No beers were found for the given search term.</div>
+                </>
+            )}
         </section>
     );
 };
