@@ -46,7 +46,7 @@ export const BeerSearch: React.FC = () => {
     return (
         <section className="bc-beer-search">
             <input className="bc-beer-search__search-term" type="text" ref={inputSearchTerm} />
-            <button className="bc-beer-search__action-button" type="button" onClick={handleButtonClick}>
+            <button className="bc-beer-search__action-button bc-button bc-button--primary" type="button" onClick={handleButtonClick}>
                 {action}
             </button>
         </section>

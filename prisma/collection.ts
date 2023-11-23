@@ -28,11 +28,19 @@ export const addBeerToCollection = async (collectionItem: ICollectionItem): Prom
  * @param {string} email The user email. 
  * @returns {ICollectionItem[]} The beers collection / list. 
  */
-export const getBeerCollection = async (email: string): Promise<ICollectionItem[]> => {
+export const getBeerCollection = async (email: string, searchTerm?: string | null): Promise<ICollectionItem[]> => {
     const prismaClient = getPrismaClient();
+
+    let whereClause: { email: string, name?: { contains: string } } = { email };
+    if (searchTerm) whereClause = {
+        ...whereClause,
+        name: {
+            contains: searchTerm
+        }
+    };
     
     try {
-        const collection = await prismaClient.collection.findMany({ where: { email } }) as ICollectionItem[]
+        const collection = await prismaClient.collection.findMany({ where: whereClause }) as ICollectionItem[]
         return collection;
     } catch (error) {
         let message = 'Something went wrong while executing the `getBeerCollection` method.';

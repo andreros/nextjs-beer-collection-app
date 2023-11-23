@@ -6,9 +6,10 @@ import { getBeerCollection } from '@/prisma/collection';
  */
 export const GET = async (request: NextRequest) => {
     const email = request.nextUrl.searchParams.get('email') ?? '';
+    const search = request.nextUrl.searchParams.get('search');
 
     try {
-        const collection = await getBeerCollection(email);
+        const collection = await getBeerCollection(email, search);
         return NextResponse.json({ collection }, { status: 200 });
     } catch (error: unknown) {
         let message = 'Unknown error';

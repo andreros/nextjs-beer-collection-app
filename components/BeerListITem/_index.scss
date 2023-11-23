@@ -1,18 +1,22 @@
+$bc-beer-list-image-size: 150px;
+
 .bc-beer-list-item {
     display: flex;
+    padding: 8px;
+    background-color: var(--background);
+    border-radius: 8px;
 
     &__image {
-        background-color: palegreen; // TO BE DELETED
         display: flex;
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
-        width: 150px;
-        height: 150px;
+        width: $bc-beer-list-image-size;
+        height: $bc-beer-list-image-size;
 
         img {
-            max-width: 150px;
-            max-height: 150px;
+            max-width: $bc-beer-list-image-size;
+            max-height: $bc-beer-list-image-size;
         }
     }
 

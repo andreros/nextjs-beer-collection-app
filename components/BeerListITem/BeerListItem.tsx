@@ -16,8 +16,8 @@ export const BeerListItem: React.FC<TBeerListItemProps> = ({ beer }) => {
                 </div>
             </Link>
             <div className="bc-beer-list-item__content">
-                <h1>{beer.name}</h1>
-                <h2>{beer.tagline}</h2>
+                <h1 className="bc-h2">{beer.name}</h1>
+                <h2 className="bc-h4">{beer.tagline}</h2>
                 <div className="bc-line-clamp-2">{beer.description}</div>
             </div>
         </section>

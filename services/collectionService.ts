@@ -22,8 +22,8 @@ export const addBeerToCollectionApi = (params: IAddBeerToCollectionParams): Axio
 };
 
 export const getBeerCollectionApi = (params: IGetBeerCollectionParams): AxiosPromise<IGetBeerCollectionApiResponse> => {
-    const { email } = params;
-    return nextApi({ method: 'get', url: '/collection/getBeerCollection', params: { email } });
+    const { email, search } = params;
+    return nextApi({ method: 'get', url: '/collection/getBeerCollection', params: { email, search } });
 };
 
 export const getBeerDetailsApi = (params: IGetBeerDetailsParams): AxiosPromise<IGetBeerDetailsApiResponse> => {

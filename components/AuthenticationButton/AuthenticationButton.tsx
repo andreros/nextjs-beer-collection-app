@@ -9,12 +9,12 @@ export const AuthenticationButton: React.FC = () => {
     const isAuthenticated = !!session?.user?.email;
 
     const handleClick = () => {
-        if (isAuthenticated) signOut();
+        if (isAuthenticated) signOut({ callbackUrl: '/' });
         else signIn();
     };
 
     return (
-        <button className="bc-authentication-button" type="button" onClick={handleClick}>
+        <button className="bc-authentication-button bc-button bc-button--secondary" type="button" onClick={handleClick}>
             {isAuthenticated ? (
                 <>
                     Sign Out <br />

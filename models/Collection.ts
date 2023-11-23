@@ -22,7 +22,8 @@ export interface IAddBeerToCollectionApiResponse {
 
 // get beer collection
 export interface IGetBeerCollectionParams {
-  email: string
+  email: string,
+  search?: string;
 }
 
 export interface IGetBeerCollectionApiResponse {

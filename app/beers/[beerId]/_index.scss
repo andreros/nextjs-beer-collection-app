@@ -41,22 +41,9 @@
         display: flex;
         flex-direction: column;
         flex-grow: 1;
+        gap: 8px;
         margin-block: auto;
         font-size: 13px;
-        font-weight: bold;
-
-        h1 {
-            font-size: 28px;
-        }
-
-        .bc-back-button {
-            text-align: inherit;
-            margin-top: 16px;
-        }
-    }
-
-    &__tagline {
-        font-size: 22px;
         font-weight: bold;
     }
 

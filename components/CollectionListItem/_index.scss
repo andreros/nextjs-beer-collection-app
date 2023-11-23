@@ -1,18 +1,22 @@
+$bc-collection-list-image-size: 150px;
+
 .bc-collection-list-item {
     display: flex;
+    padding: 8px;
+    background-color: var(--primary-rgba-10);
+    border-radius: 8px;
 
     &__image {
-        background-color: palegreen; // TO BE DELETED
         display: flex;
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
-        width: 150px;
-        height: 150px;
+        width: $bc-collection-list-image-size;
+        height: $bc-collection-list-image-size;
 
         img {
-            max-width: 150px;
-            max-height: 150px;
+            max-width: $bc-collection-list-image-size;
+            max-height: $bc-collection-list-image-size;
         }
     }
 

@@ -56,7 +56,7 @@ export const AddRemoveToCollectionButton: React.FC<TAddRemoveToCollectionButton>
     if (!email || !beerId) return <></>;
 
     return (
-        <button className="bc-add-remove-to-collection-button" type="button" onClick={handleClick}>
+        <button className="bc-add-remove-to-collection-button bc-button bc-button--primary bc-button--sm" type="button" onClick={handleClick}>
             {isBeerInCollection ? <>Remove from my collection</> : <>Add to collection</>}
         </button>
     );

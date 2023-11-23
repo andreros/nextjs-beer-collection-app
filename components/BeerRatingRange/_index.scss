@@ -10,4 +10,14 @@
     &__control {
         width: 100%;
     }
+
+    input[type='range'] {
+        &::-moz-range-progress {
+            background-color: var(--primary);
+        }
+
+        &::-moz-range-track {
+            background-color: var(--grey-dark);
+        }
+    }
 }

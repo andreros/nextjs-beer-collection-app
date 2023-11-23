@@ -1,17 +1,4 @@
 .bc-back-button {
-    border-radius: 0;
-    text-align: left;
-    background: none;
-    box-shadow: none;
-    padding: 0;
-    cursor: pointer;
-    border: none;
-    color: inherit;
-    -webkit-appearance: none;
-    font-size: 18px;
-    font-weight: bold;
-    text-decoration: underline;
-
     &::before {
         content: '« ';
         font-size: 24px;

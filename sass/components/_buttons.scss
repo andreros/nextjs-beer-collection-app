@@ -1,0 +1,38 @@
+.bc-button {
+    font-size: 16px;
+    border-radius: 25px;
+    padding: 4px 16px;
+    // resets
+    background: none;
+    box-shadow: none;
+    cursor: pointer;
+    border: none;
+    color: inherit;
+    -webkit-appearance: none;
+
+    &--primary {
+        background-color: var(--primary);
+        color: var(--secondary);
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    &--secondary {
+        background-color: var(--secondary);
+        color: var(--white);
+    }
+
+    &--link {
+        border-radius: 0;
+        padding: 0;
+        font-size: 18px;
+        font-weight: bold;
+        text-align: left;
+        text-decoration: underline;
+    }
+
+    &--sm {
+        padding: 4px 8px;
+        font-size: 14px;
+    }
+}

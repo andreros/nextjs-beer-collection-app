@@ -5,6 +5,7 @@ import { getBeersApi } from '@/services/beersService';
 import { BeerListItem } from '@/components/BeerListITem/BeerListItem';
 import { BeerSearch } from '@/components/BeerSearch/BeerSearch';
 
+// All server side pages are invoked with a `params` and a `searchParams` props.
 export type TRootPageProps = {
     searchParams: {
         [key: string]: string;
