@@ -32,9 +32,11 @@ const RootPage: React.FC<TRootPageProps> = async ({ searchParams }) => {
             {beers.length > 0 && (
                 <>
                     <BeerSearch />
-                    {beers.map((beer: IBeer) => (
-                        <BeerListItem key={beer.id} beer={beer} />
-                    ))}
+                    <div className="bc-beers-list-page__list-wrapper">
+                        {beers.map((beer: IBeer) => (
+                            <BeerListItem key={beer.id} beer={beer} />
+                        ))}
+                    </div>
                 </>
             )}
             {beers.length === 0 && !searchParams?.search && (

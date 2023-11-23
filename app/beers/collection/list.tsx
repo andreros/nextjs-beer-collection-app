@@ -35,9 +35,11 @@ const BeerCollectionList: React.FC<TBeerCollectionListProps> = ({ searchParams }
             {collection.length > 0 && (
                 <>
                     <BeerSearch />
-                    {collection.map((collectionItem) => {
-                        return <CollectionListItem key={collectionItem.beer_id} collectionItem={collectionItem} />;
-                    })}
+                    <div className="bc-beer-collection-list__list-wrapper">
+                        {collection.map((collectionItem) => {
+                            return <CollectionListItem key={collectionItem.beer_id} collectionItem={collectionItem} />;
+                        })}
+                    </div>
                 </>
             )}
             {collection.length === 0 && !searchParams?.search && (

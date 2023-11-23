@@ -6,6 +6,10 @@ $bc-beer-list-image-size: 150px;
     background-color: var(--background);
     border-radius: 8px;
 
+    a {
+        display: flex;
+    }
+
     &__image {
         display: flex;
         align-items: center;

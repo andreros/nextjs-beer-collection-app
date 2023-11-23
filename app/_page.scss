@@ -4,6 +4,30 @@
     gap: 24px;
     padding: 24px;
 
+    &__list-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+
+        // responsive list styles - tablet
+        @media only screen and (min-width: 768px) {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+
+            .bc-beer-list-item {
+                max-width: 48%;
+            }
+        }
+
+        // responsive list styles - desktop
+        @media only screen and (min-width: 1200px) {
+            .bc-beer-list-item {
+                max-width: 31%;
+            }
+        }
+    }
+
     &__no-beers {
         color: var(--primary);
     }

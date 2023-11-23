@@ -14,12 +14,12 @@ export const BeerListItem: React.FC<TBeerListItemProps> = ({ beer }) => {
                 <div className="bc-beer-list-item__image">
                     <img src={beer.image_url} alt={beer.name} />
                 </div>
+                <div className="bc-beer-list-item__content">
+                    <h1 className="bc-h2">{beer.name}</h1>
+                    <h2 className="bc-beer-list-item__tagline bc-h4">{beer.tagline}</h2>
+                    <div className="bc-beer-list-item__description bc-line-clamp-3">{beer.description}</div>
+                </div>
             </Link>
-            <div className="bc-beer-list-item__content">
-                <h1 className="bc-h2">{beer.name}</h1>
-                <h2 className="bc-beer-list-item__tagline bc-h4">{beer.tagline}</h2>
-                <div className="bc-beer-list-item__description bc-line-clamp-3">{beer.description}</div>
-            </div>
         </section>
     );
 };
