@@ -18,7 +18,7 @@ Beer Collection example application implemented with 2023 Next.JS latest version
 
 ## Architecture
 
-<img src="docs/beer-collection-application-diagram.png" width="300" alt="Homepage"><br/>
+<img src="docs/beer-collection-application-diagram.png" width="600" alt="Homepage"><br/>
 
 The application consists of three different screens.
 
