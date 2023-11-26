@@ -49,13 +49,21 @@ The application layout was designed and implemented to adapt to any screen resol
 
 Unit testing was implemented for one component as an example on how the unit testing implementation should be done in the project.
 
-Unit test coverage functionality is not working correctly.
+From the project root folder, please execute the following commands in a terminal window:
+
+```bash
+npm test
+```
+
+Unit test coverage functionality is not working correctly although a running script is provided:
+
+```bash
+npm test:coverage
+```
 
 ## Installation and application bootstrap
 
 From the project root folder, please execute the following commands in a terminal window:
-
-First, run the development server:
 
 ```bash
 npm i & npm run dev
@@ -67,9 +75,9 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 1 - The authenticated mechanism provided by `Next-auth` has revealed itself as not very reliable. Sometimes the user session authentication data fails to be retrieved causing major problems to the application correct functioning.
 
-2 - There is a known performance issue with the `Prisma client / SQLite` combination scenario resulting in very nasty `500 server errors` being triggered on database fast concurrent accesses. A workaround was implemented in the "**Beer Details Page**". It is not an elegant workaround, but for the time being it solves this issue. Not scalable, though.
+2 - There is a known performance issue with the `Prisma client / SQLite` combination scenario resulting in several very nasty `500 server error` being triggered on database fast concurrent accesses. A workaround was implemented in the "**Beer Details Page**". It is not an elegant workaround, but for the time being it solves this issue. Not scalable, though.
 
 ## Where to go from here (read it "further improvements")
 
 -   Home page listing loads a constant number of records (48 records in this case). It would be nice to implement a "Load more" button or a "pagination" system;
--   It wouuld also be nice to implement some list sorting for a more versatile list controlling;
+-   It would also be nice to implement some list sorting for a more versatile list controlling;
