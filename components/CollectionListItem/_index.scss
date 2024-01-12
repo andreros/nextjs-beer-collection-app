@@ -11,6 +11,7 @@ $bc-collection-list-image-size: 150px;
     }
 
     &__image {
+        position: relative;
         display: flex;
         align-items: center;
         justify-content: center;

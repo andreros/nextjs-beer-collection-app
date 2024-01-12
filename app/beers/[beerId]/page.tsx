@@ -1,4 +1,5 @@
 import React, { CSSProperties } from 'react';
+import Image from 'next/image';
 
 import { IBeer } from '@/models/Beer';
 import { AddRemoveToCollectionButton } from '@/components/AddRemoveToCollectionButton/AddRemoveToCollectionButton';
@@ -41,7 +42,7 @@ const BeerDetailsPage: React.FC<TBeerDetailsPageProps> = async ({ params }) => {
                 <div className="bc-beer-details-page__background_image" style={rootStyles} />
                 <div className="bc-beer-details-page__header">
                     <div className="bc-beer-details-page__thumbnail">
-                        <img src={beer.image_url} alt={beer.name} />
+                        <Image src={beer.image_url} alt={beer.name} layout="fill" objectFit="contain" />
                     </div>
                     <div className="bc-beer-details-page__title">
                         <h1>{beer.name}</h1>

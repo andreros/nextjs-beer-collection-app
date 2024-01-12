@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 
 import { IBeer } from '@/models/Beer';
@@ -12,7 +13,7 @@ export const BeerListItem: React.FC<TBeerListItemProps> = ({ beer }) => {
         <section className="bc-beer-list-item">
             <Link href={`/beers/${beer.id}`}>
                 <div className="bc-beer-list-item__image">
-                    <img src={beer.image_url} alt={beer.name} />
+                    <Image src={beer.image_url} alt={beer.name} layout="fill" objectFit="contain" />
                 </div>
                 <div className="bc-beer-list-item__content">
                     <h1 className="bc-h2">{beer.name}</h1>

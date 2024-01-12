@@ -1,4 +1,4 @@
-$bc-beer-list-image-size: 150px;
+$bc-beer-list-item-image-size: 150px;
 
 .bc-beer-list-item {
     display: flex;
@@ -11,16 +11,17 @@ $bc-beer-list-image-size: 150px;
     }
 
     &__image {
+        position: relative;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
-        width: $bc-beer-list-image-size;
-        height: $bc-beer-list-image-size;
+        width: $bc-beer-list-item-image-size;
+        height: $bc-beer-list-item-image-size;
 
         img {
-            max-width: $bc-beer-list-image-size;
-            max-height: $bc-beer-list-image-size;
+            max-width: $bc-beer-list-item-image-size;
+            max-height: $bc-beer-list-item-image-size;
         }
     }
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 
 import { ICollectionItem } from '@/models/Collection';
@@ -12,7 +13,7 @@ export const CollectionListItem: React.FC<TCollectionListItemProps> = ({ collect
         <section className="bc-collection-list-item">
             <Link href={`/beers/${collectionItem.beer_id}`}>
                 <div className="bc-collection-list-item__image">
-                    <img src={collectionItem.image_url} alt={collectionItem.name} />
+                    <Image src={collectionItem.image_url ?? ''} alt={collectionItem.name ?? ''} layout="fill" objectFit="contain" />
                 </div>
                 <div className="bc-collection-list-item__content">
                     <h1 className="bc-h2">{collectionItem.name}</h1>

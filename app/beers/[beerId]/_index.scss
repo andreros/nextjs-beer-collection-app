@@ -1,3 +1,5 @@
+$bc-beer-details-page-thumbnail-size: 100px;
+
 .bc-beer-details-page {
     display: flex;
     flex-direction: column;
@@ -24,16 +26,17 @@
     }
 
     &__thumbnail {
+        position: relative;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
-        width: 100px;
-        height: 100px;
+        width: $bc-beer-details-page-thumbnail-size;
+        height: $bc-beer-details-page-thumbnail-size;
 
         img {
-            max-width: 100px;
-            max-height: 100px;
+            max-width: $bc-beer-details-page-thumbnail-size;
+            max-height: $bc-beer-details-page-thumbnail-size;
         }
     }
 
