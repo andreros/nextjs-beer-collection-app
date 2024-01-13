@@ -20,6 +20,7 @@ $bc-beer-list-item-image-size: 150px;
         height: $bc-beer-list-item-image-size;
 
         img {
+            object-fit: contain;
             max-width: $bc-beer-list-item-image-size;
             max-height: $bc-beer-list-item-image-size;
         }

@@ -30,6 +30,16 @@ The third screen is the user beer collection, featuring a list of the beers the 
 
 The application layout was designed and implemented to adapt to any screen resolution, from a mobile phone to a tablet device to a desktop computer.
 
+## Performance
+
+-   Using Next.JS latest version 14;
+-   Using `"next/image"` component on all application images to optimize (compress) image quality and lazy load images onlçy when they enter the viewport;
+
+## SEO
+
+-   Mixed server-side rendering (SSR) for each page with client-side rendering (CSR) some leaf components on the component tree to supply as much information to search crawlers and robots as possible;
+-   Using metadata, opengraph data and structured data (JSON+LD) for each page individually;
+
 ## Tech Stack
 
 -   `Next.JS` React framework (with Typescript) for the building blocks to create the web application;

@@ -20,6 +20,7 @@ $bc-collection-list-image-size: 150px;
         height: $bc-collection-list-image-size;
 
         img {
+            object-fit: contain;
             max-width: $bc-collection-list-image-size;
             max-height: $bc-collection-list-image-size;
         }

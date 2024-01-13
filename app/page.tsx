@@ -4,6 +4,7 @@ import { IBeer } from '@/models/Beer';
 import { getBeersApi } from '@/services/beersService';
 import { BeerListItem } from '@/components/BeerListITem/BeerListItem';
 import { BeerSearch } from '@/components/BeerSearch/BeerSearch';
+import { getEnvironmentVariables } from '@/tools/tools';
 
 // All server side pages are invoked with a `params` and a `searchParams` props.
 export type TRootPageProps = {
@@ -28,7 +29,10 @@ const RootPage: React.FC<TRootPageProps> = async ({ searchParams }) => {
         });
 
     return (
-        <div className="bc-beers-list-page">
+        <div className="bc-beers-list-page" itemScope itemType="https://schema.org/ItemList">
+            <meta itemProp="name" content={`${getEnvironmentVariables('applicationName')} - Beer listing`} />
+            <meta itemProp="description" content="Available beer listing." />
+            <meta itemProp="numberOfItems" content={`${beers.length}`} />
             {beers.length > 0 && (
                 <>
                     <BeerSearch />

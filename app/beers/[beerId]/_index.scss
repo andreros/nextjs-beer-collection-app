@@ -35,6 +35,7 @@ $bc-beer-details-page-thumbnail-size: 100px;
         height: $bc-beer-details-page-thumbnail-size;
 
         img {
+            object-fit: contain;
             max-width: $bc-beer-details-page-thumbnail-size;
             max-height: $bc-beer-details-page-thumbnail-size;
         }

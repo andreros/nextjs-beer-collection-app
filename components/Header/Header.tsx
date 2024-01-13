@@ -10,7 +10,7 @@ export const Header: React.FC = () => {
     return (
         <header className="bc-header">
             <Link className="bc-header__logo_link" href="/">
-                <Image src="/logo.svg" width="80" height="80" alt="Beer collection logo" />
+                <Image src="/logo.svg" alt="Beer collection logo" width={80} height={80} />
             </Link>
             <div className="bc-header__nav-links">
                 <Provider>

@@ -7,6 +7,7 @@ import { BeerSearch } from '@/components/BeerSearch/BeerSearch';
 import { CollectionListItem } from '@/components/CollectionListItem/CollectionListItem';
 import { ICollectionItem } from '@/models/Collection';
 import { getBeerCollectionApi } from '@/services/collectionService';
+import { getEnvironmentVariables } from '@/tools/tools';
 
 export type TBeerCollectionListProps = {
     searchParams: {
@@ -30,7 +31,10 @@ const BeerCollectionList: React.FC<TBeerCollectionListProps> = ({ searchParams }
     }, [session?.user?.email]);
 
     return (
-        <section className="bc-beer-collection-list">
+        <section className="bc-beer-collection-list" itemScope itemType="https://schema.org/ItemList">
+            <meta itemProp="name" content={`${getEnvironmentVariables('applicationName')} - My collection`} />
+            <meta itemProp="description" content="My collection beer listing." />
+            <meta itemProp="numberOfItems" content={`${collection.length}`} />
             <h1>My Collection</h1>
             {collection.length > 0 && (
                 <>
